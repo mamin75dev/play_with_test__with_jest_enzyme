@@ -19,8 +19,10 @@ export default class Congrats extends Component {
   render() {
     const { success } = this.props;
     return (
-      <div data-test="congrats-component">
-        <p data-test="congrats-message">{success ? "Congrats!" : ""}</p>
+      <div data-test="congrats-component" className="notification is-primary">
+        <p data-test="congrats-message">
+          {success ? "Congrats! You guess the word!" : ""}
+        </p>
       </div>
     );
   }

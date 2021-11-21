@@ -11,7 +11,7 @@ const GuessedWords = ({ guessedWords }) => {
   } else {
     contents = (
       <div data-test="guessed-words-section">
-        <table>
+        <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
               <th>Guess</th>
@@ -21,7 +21,7 @@ const GuessedWords = ({ guessedWords }) => {
           <tbody>
             {guessedWords.map((word, index) => (
               <tr data-test="guessed-word" key={index}>
-                <td>{word.guguessedWord}</td>
+                <td>{word.guessedWord}</td>
                 <td>{word.letterMatchCount}</td>
               </tr>
             ))}

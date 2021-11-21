@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import {
   checkComponentProps,
   findComponentByTestAttr,
-} from "../tests/testUtils";
+} from "../../tests/testUtils";
 import GuessedWords from "./GuessedWords";
 
 const defaultProps = {
