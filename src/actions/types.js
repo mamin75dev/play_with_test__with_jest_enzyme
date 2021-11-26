@@ -1,0 +1,3 @@
+const CORRECT_GUESS = "CORRECT_GUESS";
+
+export { CORRECT_GUESS };
