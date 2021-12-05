@@ -1,4 +1,12 @@
 import checkPropTypes from "check-prop-types";
+import { applyMiddleware, createStore } from "redux";
+import rootReducer from "../reducers";
+import { middlware } from "../setupStore";
+
+const storeFactory = (initialState) => {
+  const createStoreWithMiddleware = applyMiddleware(...middlware)(createStore);
+  return createStoreWithMiddleware(rootReducer, initialState);
+};
 
 const tagHelper = (tag) => {
   return `[data-test='${tag}']`;
@@ -19,4 +27,4 @@ const checkComponentProps = (component, conformingProps) => {
   expect(propError).toBeUndefined();
 };
 
-export { findComponentByTestAttr, checkComponentProps };
+export { findComponentByTestAttr, checkComponentProps, storeFactory };

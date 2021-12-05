@@ -1,4 +1,5 @@
-import { CORRECT_GUESS, correctGuess } from ".";
+import { correctGuess } from ".";
+import { CORRECT_GUESS } from "./types";
 
 describe("correctGuess", () => {
   test("should return an action with type `CORRECT_GUESS`", () => {

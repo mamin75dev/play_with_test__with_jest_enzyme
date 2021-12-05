@@ -8,5 +8,6 @@ describe("Success Reducer", () => {
   });
   test("should return state of true when recieving an action of type CORRECT_GUESS", () => {
     const newState = successReducer(undefined, { type: CORRECT_GUESS });
+    expect(newState).toBe(true);
   });
 });

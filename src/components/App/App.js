@@ -36,6 +36,7 @@ import React, { Component } from "react";
 
 import Congrats from "../Congrats/Congrats";
 import GuessedWords from "../GuessedWords/GuessedWords";
+import Input from "../Input/Input";
 
 export default class App extends Component {
   render() {
@@ -43,14 +44,15 @@ export default class App extends Component {
       <div className="App">
         <h1 className="title">Jotto</h1>
         <Congrats success={true} />
-        <GuessedWords
+        <Input />
+        {/* <GuessedWords
           guessedWords={[
             {
               guessedWord: "train",
               letterMatchCount: 3,
             },
           ]}
-        />
+        /> */}
       </div>
     );
   }
