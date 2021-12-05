@@ -1,3 +1,4 @@
 const CORRECT_GUESS = "CORRECT_GUESS";
+const GUESS_WORD = "GUESS_WORD";
 
-export { CORRECT_GUESS };
+export { CORRECT_GUESS, GUESS_WORD };

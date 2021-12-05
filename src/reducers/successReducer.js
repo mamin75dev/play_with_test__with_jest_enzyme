@@ -1,6 +1,6 @@
 import { CORRECT_GUESS } from "../actions/types";
 
-const reducer = (state = false, action) => {
+export default (state = false, action) => {
   switch (action.type) {
     case CORRECT_GUESS:
       return true;
@@ -8,5 +8,3 @@ const reducer = (state = false, action) => {
       return state;
   }
 };
-
-export default reducer;

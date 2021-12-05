@@ -1,4 +1,4 @@
-export const getLetterMatchCount = (guessedWord, secretWord) => {
+const getLetterMatchCount = (guessedWord, secretWord) => {
   const secretLetterSet = new Set(secretWord.split(""));
   const guessedLetterSet = new Set(guessedWord.split(""));
   /**
@@ -9,3 +9,5 @@ export const getLetterMatchCount = (guessedWord, secretWord) => {
   return [...secretLetterSet].filter((letter) => guessedLetterSet.has(letter))
     .length;
 };
+
+export { getLetterMatchCount };
