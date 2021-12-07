@@ -1,7 +1,8 @@
 import { getLetterMatchCount } from "../helpers";
-import { CORRECT_GUESS, GUESS_WORD } from "./types";
+import { CORRECT_GUESS, GUESS_WORD, SET_SECRET_WORD } from "./types";
+import axios from "axios";
 
-export const guessWords = (guessedWord) => {
+const guessWords = (guessedWord) => {
   return (dispatch, getState) => {
     const secretWord = getState().secretWord;
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
@@ -18,3 +19,16 @@ export const guessWords = (guessedWord) => {
     }
   };
 };
+
+const getSecretWord = () => async (dispatch) => {
+  const { data } = await axios({
+    method: "get",
+    url: "http://localhost:3030",
+  });
+  return dispatch({
+    type: SET_SECRET_WORD,
+    payload: data,
+  });
+};
+
+export { guessWords, getSecretWord };
