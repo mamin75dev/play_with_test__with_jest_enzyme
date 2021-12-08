@@ -64,4 +64,20 @@ describe("Input component render", () => {
 /**
  * Redux test
  */
-describe("Input component update state", () => {});
+describe("redux prop", () => {
+  test("should have success piece of state as prop", () => {
+    /**
+     * Testing mapStateToProps
+     */
+    const success = true;
+    const wrapper = setup({ success });
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toEqual(success);
+  });
+
+  test("should guessWords action creator return a function", () => {
+    const wrapper = setup();
+    const guessWordsProp = wrapper.instance().props.guessWords;
+    expect(guessWordsProp).toBeInstanceOf(Function);
+  });
+});
