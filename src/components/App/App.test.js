@@ -1,12 +1,15 @@
 import { shallow, render, mount } from "enzyme";
 import App from "./App";
-import { findComponentByTestAttr } from "../../tests/testUtils";
+import { findComponentByTestAttr, storeFactory } from "../../tests/testUtils";
 
-const setup = (props = {}, state = null) => {
-  const wrapper = shallow(<App {...props} />);
-  if (state) {
-    wrapper.setState(state);
-  }
+const setup = (initialState = {}) => {
+  const store = storeFactory(initialState);
+  const wrapper = shallow(<App store={store} />)
+    .dive()
+    .dive();
+  // if (state) {
+  //   wrapper.setState(state);
+  // }
   return wrapper;
 };
 
@@ -83,5 +86,34 @@ xdescribe("App component", () => {
      */
     const counterState = wrapper.state("counter");
     expect(counterState).toBe(6);
+  });
+});
+
+describe("App redux props", () => {
+  test("should have access to success state", () => {
+    const success = true;
+    const wrapper = setup({ success });
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toEqual(success);
+  });
+
+  test("should have access to secretWord state", () => {
+    const secretWord = "party";
+    const wrapper = setup({ secretWord });
+    const secretWordProp = wrapper.instance().props.secretWord;
+    expect(secretWordProp).toEqual(secretWord);
+  });
+
+  test("should have access to guessedWords state", () => {
+    const guessedWords = [{ guessedWord: "train", letterMatchCount: 3 }];
+    const wrapper = setup({ guessedWords });
+    const guessedWordsProp = wrapper.instance().props.guessedWords;
+    expect(guessedWordsProp).toEqual(guessedWords);
+  });
+
+  test("should have access to getSecretWord action creator", () => {
+    const wrapper = setup();
+    const getSecretWordProp = wrapper.instance().props.getSecretWord;
+    expect(getSecretWordProp).toBeInstanceOf(Function);
   });
 });
